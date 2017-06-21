@@ -1,0 +1,62 @@
+<?php if (!defined('THINK_PATH')) exit();?><!--  
+<script src="__PUBLIC__/dwz/js/jquery.ui.js" type="text/javascript"></script>
+<link href="__PUBLIC__/dwz/js/jquery.ui.css" rel="stylesheet" type="text/css" />
+
+<link href="__PUBLIC__/js/mutiselect/assets/prettify.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/js/mutiselect/assets/style.css" rel="stylesheet" type="text/css" />
+<script href="__PUBLIC__/js/mutiselect/assets/ba.hashchange.js" type="text/javascript"></script>
+<script href="__PUBLIC__/js/mutiselect/assets/prettify.js" type="text/javascript"></script>
+
+<link href="__PUBLIC__/js/mutiselect/jquery.multiselect.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/js/mutiselect/jquery.multiselect.filter.css" rel="stylesheet" type="text/css" />
+<script href="__PUBLIC__/js/mutiselect/jquery.multiselect.min.js" type="text/javascript"></script>
+<script href="__PUBLIC__/js/mutiselect/jquery.multiselect.filter.min.js" type="text/javascript"></script>
+-->
+<div class="pageContent"  style="height:485px;overflow-y:auto;">
+    <form  class="pageForm required-validate"  action="<?php echo U('admin/yks_manage/ytaskpageAddzx');?>" onsubmit="return validateCallback(this,dialogAjaxDone)" method="post" >
+    <table id="UserListTable" class="list" style="width:100%;">
+        <tbody>
+            <tr>
+                <td align="center" width='150'><label>试卷名称</label></td>
+                <td align="left">
+                    <input type="text" name="unitname" class="required" style="width:300px;"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width='150'><label>总分</label></td>
+                <td align="left">
+                    <input type="text" name="score" class="required" value="100"/>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" width='150'><label>考试时长</label></td>
+                <td align="left">
+                    <input type="text" name="time" class="required" value="120"/>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td align="center" width='150'><label>考试有效时间</label></td>-->
+                <!--<td align="left">-->
+                    <!--<input type="text" name="starttime" class="required date" format="yyyy-MM-dd HH:mm:ss" />- -->
+                    <!--<input type="text" name="endtime" class="required date" format="yyyy-MM-dd HH:mm:ss" />-->
+                <!--</td>-->
+            <!--</tr>-->
+
+            <tr>
+                <td align="center"><label>检修部位</label></td>
+                <td align="left">
+
+                    <select multiple="multiple" name="unitA" id="partcont1" size="15">
+                        <?php if(is_array($unitList)): $i = 0; $__LIST__ = $unitList;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$unitvo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($unitvo['id']); ?>"><?php echo ($unitvo['errorname']); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td colspan='2' align='right'><input type='submit' value='提交' /><input type='reset' value='重置' /></td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="submit" value="1"/>
+    </form>
+</div><!-- pageContent end -->
